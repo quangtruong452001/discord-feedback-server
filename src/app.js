@@ -11,6 +11,9 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// init database connection
+import './dbs/mongodb.init.js';
+
 // routes
 app.use('/api', router);
 
