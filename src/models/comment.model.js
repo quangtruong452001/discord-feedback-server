@@ -1,14 +1,13 @@
-const { Schema, model } = require('mongoose');
-
+import { Schema, model } from 'mongoose';
 const DOCUMENT_NAME = 'Comment';
 const COLLECTION_NAME = 'Comments';
 
 const commentSchema = new Schema(
   {
     comment: String,
-    discord_userID: String,
+    discord_userID: Number,
     discord_username: String,
-    discord_channelID: String,
+    discord_channelID: Number,
     status: {
       type: String,
       enum: ['new', 'resolved'],
@@ -27,4 +26,4 @@ const commentSchema = new Schema(
 
 const Comment = model(DOCUMENT_NAME, commentSchema);
 
-module.exports = Comment;
+export default Comment;

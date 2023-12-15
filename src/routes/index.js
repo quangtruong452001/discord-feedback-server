@@ -1,5 +1,5 @@
 import express from 'express';
-
+import commentRouter from './comment/index.js';
 const router = express.Router();
 
 router.get('/checkstatus', (req, res) => {
@@ -8,5 +8,7 @@ router.get('/checkstatus', (req, res) => {
     message: 'Welcome to the API',
   });
 });
+
+router.use('/comment', commentRouter);
 
 export default router;

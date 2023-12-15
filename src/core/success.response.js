@@ -1,9 +1,6 @@
-'use strict';
+import { StatusCodes } from '../httpStatusCode/statusCodes.js';
 
-const {
-  StatusCodes,
-  ReasonPhrases,
-} = require('../httpStatusCode/httpStatusCode');
+import { ReasonPhrases } from '../httpStatusCode/reasonPhrases.js';
 
 class SuccessResponse {
   constructor({
@@ -22,35 +19,4 @@ class SuccessResponse {
   }
 }
 
-class OK extends SuccessResponse {
-  constructor({ message, metadata }) {
-    super({
-      message,
-      metadata,
-    });
-  }
-}
-
-class Created extends SuccessResponse {
-  constructor({
-    message,
-    statusCode = StatusCodes.CREATED,
-    reasonStatusCode = ReasonPhrases.CREATED,
-    metadata,
-    options,
-  }) {
-    super({
-      message,
-      metadata,
-      statusCode,
-      reasonStatusCode,
-    });
-    this.options = options;
-  }
-}
-
-module.exports = {
-  SuccessResponse,
-  OK,
-  Created,
-};
+export default SuccessResponse;

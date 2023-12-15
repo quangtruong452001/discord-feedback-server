@@ -1,4 +1,4 @@
-import Comment from '../models/comment.model';
+import Comment from '../models/comment.model.js';
 class CommentService {
   static async createComment({
     comment,
@@ -6,12 +6,31 @@ class CommentService {
     discord_username,
     discord_channelID,
   }) {
-    const comment = new Comment({
+    const newComment = new Comment({
       comment,
       discord_userID,
       discord_username,
       discord_channelID,
     });
-    return await comment.save().select();
+    return newComment.save();
+  }
+
+  static async getAllComments({ limit = 10, page = 1 }) {
+    const skip = (page - 1) * limit;
+    return await Comment.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .select([
+        'comment',
+        'discord_userID',
+        'discord_username',
+        'discord_channelID',
+        'status',
+        'status_event',
+      ])
+      .lean();
   }
 }
+
+export default CommentService;
