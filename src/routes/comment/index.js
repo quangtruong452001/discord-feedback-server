@@ -5,5 +5,6 @@ const commentRouter = Router();
 
 commentRouter.post('', asyncHandler(commentControler.createComment));
 commentRouter.get('', asyncHandler(commentControler.getAllComments));
+commentRouter.put('/:id', asyncHandler(commentControler.updateComment));
 
 export default commentRouter;

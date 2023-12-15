@@ -9,6 +9,6 @@ router.get('/checkstatus', (req, res) => {
   });
 });
 
-router.use('/comment', commentRouter);
+router.use('/api/comment', commentRouter);
 
 export default router;

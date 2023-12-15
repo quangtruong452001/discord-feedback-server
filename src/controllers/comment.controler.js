@@ -12,7 +12,14 @@ class CommentController {
   async getAllComments(req, res, next) {
     new SuccessResponse({
       message: 'Comments retrieved successfully',
-      metadata: await CommentService.getAllComments(req.query),
+      metadata: await CommentService.getAllComments(),
+    }).send(res);
+  }
+
+  async updateComment(req, res, next) {
+    new SuccessResponse({
+      message: 'Comment updated successfully',
+      metadata: await CommentService.updateComment(req.params),
     }).send(res);
   }
 }

@@ -18,11 +18,3 @@ export class BadRequestError extends ErrorResponse {
   }
 }
 
-export class NotFoundError extends ErrorResponse {
-  constructor(
-    message = ReasonPhrases.NOT_FOUND,
-    statusCode = StatusCodes.NOT_FOUND
-  ) {
-    super(message, statusCode);
-  }
-}

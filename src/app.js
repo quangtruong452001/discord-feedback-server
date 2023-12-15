@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 import './dbs/mongodb.init.js';
 
 // routes
-app.use('/api', router);
+app.use('', router);
 
 // middleware for handling error
 app.use((req, res, next) => {
