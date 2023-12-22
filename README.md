@@ -1,6 +1,6 @@
 # Discord-feedback-server
 
-Deploy url: `http://3.25.60.141`
+Deploy url: `http://54.206.122.125`
 </br>
 Database: **MongoDB**
 </br>
@@ -11,7 +11,7 @@ Database: **MongoDB**
 
 I used Github Action service for CI/CD to deploy the server to AWS EC2 instance
 </br>
-[EC2 instance Public IP](http://3.25.60.141) : `http://3.25.60.141`
+[EC2 instance Public IP](http://54.206.122.125) : `http://54.206.122.125`
 
 Data schema of comment:
 
