@@ -39,11 +39,13 @@ jobs:
           repository: quangtruong452001/discord-feedback-server-config
           ref: main
           ssh-key: ${{ secrets.CONFIG_SSH_TOKEN }}
+          path: config-repo
 
       # Git config setup
       - name: Git Config
         id: config-git
         run: |
+          cd config-repo
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           echo "date-build=$(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
@@ -58,12 +60,13 @@ jobs:
         # Update image path
       - name: NON-TAG Update the image
         run: |
-          cd k8s
+          cd config-repo/k8s
           kustomize edit set image ${{ secrets.DOCKER_HUB_USERNAME }}/discord-feedback-server=${{ secrets.DOCKER_HUB_USERNAME }}/discord-feedback-server:${{ github.sha }}
 
         # Commit and Push changes
       - name: Commit and Push changes
         run: |
+          cd config-repo
           git add .
           git commit -m "Update image taf" || echo "No changes to commit"
           git push
