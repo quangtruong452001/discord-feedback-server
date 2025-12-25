@@ -41,6 +41,18 @@ jobs:
           ssh-key: ${{ secrets.CONFIG_SSH_TOKEN }}
           path: config-repo
 
+      # Debug: List directory contents
+      - name: Debug - List working directory
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Contents of current directory:"
+          ls -la
+          echo "Contents of config-repo (if exists):"
+          ls -la config-repo || echo "config-repo not found"
+          echo "Contents of config-repo/k8s (if exists):"
+          ls -la config-repo/k8s || echo "config-repo/k8s not found"
+
       # Git config setup
       - name: Git Config
         id: config-git
